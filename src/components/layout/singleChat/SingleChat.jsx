@@ -3,7 +3,8 @@ import { Box, Button, Text } from '@chakra-ui/react';
 
 import { Providers } from '../../../providers';
 import { ICONS } from '../../../icons/icons';
-import { getSender } from '../../../helpers/ChatLogics';
+import { getSender, getSenderInfo } from '../../../helpers/ChatLogics';
+import ProfileModal from '../profileModal/ProfileModal';
 
 const SingleChat = () => {
   const { 
@@ -38,11 +39,17 @@ const SingleChat = () => {
               </Button>
               {
                 !selectedChat?.isGroupChat && 
-                  <span>{getSender(currentUser, selectedChat?.users)}</span>
+                  <>
+                    {getSender(currentUser, selectedChat?.users)}
+                    <ProfileModal user={getSenderInfo(currentUser, selectedChat?.users)}/>
+                  </>
               }
 
-              {
-                selectedChat?.isGroupChat && <>{selectedChat?.chatName.toUpperCase()}</>
+              { 
+                selectedChat?.isGroupChat && 
+                  <>
+                    {selectedChat?.chatName.toUpperCase()}
+                  </>
               }
             </Text>
           </>
