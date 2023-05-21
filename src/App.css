@@ -16,7 +16,7 @@
 
 .chat_container {
   width: 100%;
-  height: 100vh;
+  height: auto;
   background: url("https://pixelz.cc/wp-content/uploads/2018/12/new-york-cityscape-uhd-4k-wallpaper.jpg") center / cover;
 }
 
