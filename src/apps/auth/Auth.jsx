@@ -13,7 +13,7 @@ from '@chakra-ui/react';
 import * as Components from "../../components";
 
 const Auth = () => {
-  const [authState, setAuthState] = React.useState("signup");
+  const [authState, setAuthState] = React.useState("login");
 
   return (
     <React.Fragment>
