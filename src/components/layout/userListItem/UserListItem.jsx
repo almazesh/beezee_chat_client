@@ -14,6 +14,7 @@ const UserListItem = ({user, handleFunction}) => {
           background: "#38b2ac",
           color:"white"
         }}
+        overflow={"hidden"}
         w={"100%"}
         display={"flex"}
         alignItems={"center"}

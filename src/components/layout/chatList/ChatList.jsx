@@ -65,12 +65,14 @@ const ChatList = () => {
           <Text>
             My Chats
           </Text>
-          <Button
-            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-          >
-            New Group chat
-            +
-          </Button>
+          <Components.GroupModal>
+            <Button
+              fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+            >
+              New Group chat
+              +
+            </Button>
+          </Components.GroupModal>
         </Box>
 
         <Box
@@ -115,9 +117,6 @@ const ChatList = () => {
                               ? getSender(currentUser, c.users)
                               : c.chatName
                           }
-                        </Text>
-                        <Text fontSize={"12px"}>
-                          <b>Email: {}</b>
                         </Text>
                       </Box>
                     </Box>

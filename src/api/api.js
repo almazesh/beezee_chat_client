@@ -29,6 +29,10 @@ const GetChats = () => {
 
 const CreateChat = (userId) => {
   return instance.post(API.routes.createChat, { userId });
+};
+
+const CreateGroup = (data) => {
+  return instance.post(API.routes.createGroup, data);
 }
 
 export const RequestsDB = {
@@ -37,5 +41,6 @@ export const RequestsDB = {
   LoginUser,
   AuthUser,
   SearchUser,
-  CreateChat
+  CreateChat,
+  CreateGroup
 };

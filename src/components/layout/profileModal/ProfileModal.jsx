@@ -27,7 +27,7 @@ const ProfileModal = ({ user, children }) => {
     } else {
       setProfileImage(NoneAvatar);
     }
-  }, [user.avatar]);
+  }, [user?.avatar]);
 
   return (
     <React.Fragment>

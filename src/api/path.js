@@ -8,7 +8,8 @@ const routes = {
   loginUser: "/api/user/login",
   authUser: "/api/user/me",
   searchUser: (name) => `/api/user?search=${name}`,
-  createChat: "/api/chat/create"
+  createChat: "/api/chat/create",
+  createGroup: "/api/chat/create/group"
 }
 
 
