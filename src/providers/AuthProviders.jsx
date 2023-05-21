@@ -7,6 +7,8 @@ import { Hooks } from '../hooks';
 const AuthProviders = ({children}) => {
   const [token, setToken] = React.useState("");
   const [currentUser, setCurrentUser] = React.useState({});
+  const [selectedChat, setSelectedChat] = React.useState({});
+  const [chats, setChats] = React.useState([]);
   
   const { actions  } = Hooks.useRedirect();
 
@@ -42,8 +44,21 @@ const AuthProviders = ({children}) => {
   const values = React.useMemo(() => ({
     token,
     currentUser,
-    logOut
-  }),[token, currentUser, logOut])
+    logOut,
+    setSelectedChat,
+    selectedChat,
+    setChats,
+    chats
+  }),
+    [
+      token, 
+      currentUser, 
+      logOut, 
+      setSelectedChat, 
+      selectedChat,
+      chats
+    ]
+  );
 
   return (
     <React.Fragment>

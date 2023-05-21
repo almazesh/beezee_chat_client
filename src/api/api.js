@@ -24,13 +24,18 @@ const SearchUser = (name) => {
 // Layout
 
 const GetChats = () => {
-  return instance.get(API.routes.chat());
+  return instance.get(API.routes.chat);
 };
+
+const CreateChat = (userId) => {
+  return instance.post(API.routes.createChat, { userId });
+}
 
 export const RequestsDB = {
   GetChats,
   CreateUser,
   LoginUser,
   AuthUser,
-  SearchUser
+  SearchUser,
+  CreateChat
 };

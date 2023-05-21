@@ -14,6 +14,7 @@ import {
   MenuDivider, 
   MenuItem, 
   MenuList, 
+  Spinner, 
   Text, 
   Tooltip, 
   useDisclosure,
@@ -31,11 +32,18 @@ const SideDrawer = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isLoadingChat, setIsLoadingChat] = React.useState(false);
   
-  const { currentUser, logOut } = Providers.useAuth();
+  const { 
+    currentUser, 
+    logOut, 
+    selectedChat, 
+    setSelectedChat,
+    chats,
+    setChats
+  } = Providers.useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     setIsLoading(true);
     if(!search) {
       toast({
@@ -50,12 +58,11 @@ const SideDrawer = () => {
     };
 
     try {
-      const request = RequestsDB.SearchUser(search);
-      request.then(res => {
-        console.log(res)
-        setSearchResult(res.data);
+      const { data } = await RequestsDB.SearchUser(search);
+      if(data) {
+        setSearchResult(data);
         setIsLoading(false);
-      });
+      };
     } catch(e) {
       toast({
         title: "Error Occured!",
@@ -69,8 +76,31 @@ const SideDrawer = () => {
     };
   }; 
 
-  const accessChat = (userId) => {
+  const accessChat = async (userId) => {
+    setIsLoadingChat(true);
 
+    try {
+      const { data } = await RequestsDB.CreateChat(userId);
+
+      if(!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
+
+      if(data) {
+        setSelectedChat(data);
+        setIsLoadingChat(false);
+        onClose();
+      }
+
+    } catch(e) {
+      toast({
+        title: "Error Fetching the Chat!",
+        description: e.message,
+        duration: 5000,
+        status: "error",
+        position: "top-right",
+        isClosable: true
+      });
+      setIsLoadingChat(false);
+    }
   };
 
   return (
@@ -152,8 +182,14 @@ const SideDrawer = () => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth={"2px"}>
-            Search Users
+          <DrawerHeader 
+            borderBottomWidth={"2px"} 
+            display={"flex"} 
+            alignItems={"center"}
+            justifyContent={"space-between"}
+          >
+            <span>Search Users</span>
+            {isLoadingChat ? <Spinner display={"flex"}/> : null}
           </DrawerHeader>
           <DrawerBody>
             <Box display={"flex"} pb={2}>
