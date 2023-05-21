@@ -12,7 +12,8 @@ const ChatList = () => {
     chats, 
     selectedChat, 
     setSelectedChat,
-    currentUser
+    currentUser,
+    render
   } = Providers.useAuth();
   const toast = useToast();
 
@@ -22,7 +23,6 @@ const ChatList = () => {
       if(data) {
         setChats(data);
       } 
-      console.log(data)
     } catch(e) {
       toast({
         title: "Error Occured!",
@@ -37,9 +37,7 @@ const ChatList = () => {
 
   React.useEffect(() => {
     fetchAllChats();
-  }, []);
-
-
+  }, [render]);
 
   return (
     <React.Fragment>

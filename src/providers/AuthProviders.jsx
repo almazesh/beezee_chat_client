@@ -7,8 +7,10 @@ import { Hooks } from '../hooks';
 const AuthProviders = ({children}) => {
   const [token, setToken] = React.useState("");
   const [currentUser, setCurrentUser] = React.useState({});
-  const [selectedChat, setSelectedChat] = React.useState({});
+  const [selectedChat, setSelectedChat] = React.useState(null);
   const [chats, setChats] = React.useState([]);
+  const [render, setRender] = React.useState("");
+
   
   const { actions  } = Hooks.useRedirect();
 
@@ -48,7 +50,9 @@ const AuthProviders = ({children}) => {
     setSelectedChat,
     selectedChat,
     setChats,
-    chats
+    chats,
+    setRender,
+    render
   }),
     [
       token, 
@@ -56,7 +60,9 @@ const AuthProviders = ({children}) => {
       logOut, 
       setSelectedChat, 
       selectedChat,
-      chats
+      chats,
+      setRender,
+      render
     ]
   );
 
