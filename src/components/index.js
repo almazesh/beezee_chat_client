@@ -4,6 +4,7 @@ import ChatList from "./layout/chatList/ChatList";
 import ChatLoading from "./layout/chatLoading/ChatLoading";
 import ChatRoom from "./layout/chatRoom/ChatRoom";
 import GroupModal from "./layout/groupModal/GroupModal";
+import GroupUpdateModal from "./layout/groupUpdateModal/GroupUpdateModal";
 import ProfileModal from "./layout/profileModal/ProfileModal";
 import SideDrawer from "./layout/sideDrawer/SideDrawer";
 import SingleChat from "./layout/singleChat/SingleChat";
@@ -21,6 +22,6 @@ export {
   UserListItem,
   GroupModal,
   UserBadgeItem,
-  SingleChat
+  SingleChat,
+  GroupUpdateModal
 };
-  

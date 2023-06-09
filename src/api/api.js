@@ -27,13 +27,25 @@ const GetChats = () => {
   return instance.get(API.routes.chat);
 };
 
-const CreateChat = (userId) => {
+const CreateChat = (userId) => { 
   return instance.post(API.routes.createChat, { userId });
 };
 
 const CreateGroup = (data) => {
   return instance.post(API.routes.createGroup, data);
-}
+};
+
+const RenameGroup = (data) => {
+  return instance.put(API.routes.renameGroup, data);
+};
+
+const AddUserToGroup = (data) => {
+  return instance.put(API.routes.addUserToGroup, data);
+};
+
+const DeleteUserFromGroup = (data) => {
+  return instance.put(API.routes.deleteUserFromGroup, data);
+};
 
 export const RequestsDB = {
   GetChats,
@@ -42,5 +54,8 @@ export const RequestsDB = {
   AuthUser,
   SearchUser,
   CreateChat,
-  CreateGroup
+  CreateGroup,
+  RenameGroup,
+  AddUserToGroup,
+  DeleteUserFromGroup
 };

@@ -9,7 +9,10 @@ const routes = {
   authUser: "/api/user/me",
   searchUser: (name) => `/api/user?search=${name}`,
   createChat: "/api/chat/create",
-  createGroup: "/api/chat/create/group"
+  createGroup: "/api/chat/create/group",
+  renameGroup: "/api/chat/rename",
+  addUserToGroup: "/api/chat/add/user",
+  deleteUserFromGroup: "/api/chat/delete/user"
 }
 
 

@@ -5,6 +5,7 @@ import { Providers } from '../../../providers';
 import { ICONS } from '../../../icons/icons';
 import { getSender, getSenderInfo } from '../../../helpers/ChatLogics';
 import ProfileModal from '../profileModal/ProfileModal';
+import * as Components from "../../../components";
 
 const SingleChat = () => {
   const { 
@@ -15,8 +16,6 @@ const SingleChat = () => {
     currentUser
   } = Providers.useAuth();
   
-  console.log(selectedChat)
-
   return (
     <React.Fragment>
       {
@@ -49,9 +48,24 @@ const SingleChat = () => {
                 selectedChat?.isGroupChat && 
                   <>
                     {selectedChat?.chatName.toUpperCase()}
+                    <Components.GroupUpdateModal />
                   </>
               }
             </Text>
+
+            <Box
+              display={"flex"}
+              flexDir={"column"}
+              justifyContent={"flex-end"}
+              p={3}
+              bg="#e8e8e8"
+              w={"100%"}
+              height={"100%"}
+              borderRadius={"lg"}
+              overflowY={"hidden"}
+            >
+
+            </Box>
           </>
         ) : (
           <Box

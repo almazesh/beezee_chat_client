@@ -35,7 +35,9 @@ const ProfileModal = ({ user, children }) => {
         children ? (
           <span onClick={onOpen}>{children}</span>
         ) : (
-          <ICONS.BiUserPin onClick={onOpen}/>
+          <Button>
+            <ICONS.BiUserPin onClick={onOpen}/>
+          </Button>
         )
       }
 
